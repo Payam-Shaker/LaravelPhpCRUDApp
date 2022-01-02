@@ -42,7 +42,7 @@ class ProductController extends Controller
         ]);
         $result = Product::create($validatedData);
 
-        return redirect('/products')->with('success', 'Game is successfully saved');
+        return redirect('/products')->with('success', 'Product is successfully saved');
     }
 
     /**
@@ -64,7 +64,9 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+        $product = Product::findOrFail($id);
+
+        return view('edit', compact('product'));
     }
 
     /**
@@ -76,7 +78,13 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validatedData = $request->validate([
+            'title' => 'required|max:255',
+            'price' => 'required'
+        ]);
+        Product::whereId($id)->update($validatedData);
+
+        return redirect('/products')->with('success', 'Product successfully updated');
     }
 
     /**

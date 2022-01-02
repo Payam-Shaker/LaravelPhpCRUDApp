@@ -20,4 +20,5 @@ use Illuminate\Support\Facades\Route;
 
 Route::resource('products', 'ProductController');
 Route::get('/', [ProductController::class, 'index']);
-Route::get('/create', [ProductController::class, 'create']);
+//Route::get('/create', [ProductController::class, 'create']);
+//Route::get('/edit', [ProductController::class, 'edit']);

@@ -439,7 +439,8 @@
                             <div class="ml-4 text-lg leading-7 font-semibold">
                                 <p class="underline text-gray-900 dark:text-white">Products</p>
                                 <div>
-                                    <a href="{{url('/create')}}">create new product</a>
+                                    <a href="{{route('products.create')}}">Create new product</a>
+                                    <a href="{{url('/edit')}}"> Update a product</a>
                                 </div>
                             </div>
                         </div>
@@ -461,7 +462,9 @@
                                             <td>{{$p->title}}</td>
                                             <td>{{$p->description}}</td>
                                             <td>{{$p->price}}</td>
-                                            <td>Edit-Delete</td>
+                                            <td>
+                                                <a href="{{route('products.edit', $p->id)}}"> Update</a> | <a href="">Delete</a>
+                                            </td>
 
                                         </tr>
                                         @endforeach
