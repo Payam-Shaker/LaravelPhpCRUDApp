@@ -440,7 +440,7 @@
                                 <p class="underline text-gray-900 dark:text-white">Products</p>
                                 <div>
                                     <a href="{{route('products.create')}}">Create new product</a>
-                                    <a href="{{url('/edit')}}"> Update a product</a>
+
                                 </div>
                             </div>
                         </div>
@@ -463,7 +463,14 @@
                                             <td>{{$p->description}}</td>
                                             <td>{{$p->price}}</td>
                                             <td>
-                                                <a href="{{route('products.edit', $p->id)}}"> Update</a> | <a href="">Delete</a>
+
+                                                <a href="{{route('products.edit', $p->id)}}"> Update</a> |
+                                                <form action="{{route('products.destroy', $p->id)}}" method="post">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button class="btn btn-danger" type="submit">Delete</button>
+                                                </form>
+
                                             </td>
 
                                         </tr>
